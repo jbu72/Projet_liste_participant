@@ -1,3 +1,19 @@
+ <?php
+session_start();
+if(!$_SESSION['mdp']){
+    header('Location: index1.php');
+    exit();
+}
+?>
+<!-- Une autre méthode bloquer l'accès à lapage sans être administrateur -->
+<?php
+// session_start();
+// if(!$_SESSION['mdp']){
+//     //mais par défaut il faut déclarer la variable $_SESSION['mdp']
+//     header('Location: index1.php');
+// }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +24,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <section class="background">
     
     <div class="container">
@@ -15,7 +32,11 @@
         <form  action="rechercher.php" method="POST">
             <input class="rech"  type="text" name="search" placeholder="Rechercher ici !!!">
             <button type="submit">Rechercher</button>
+            <!-- <a class="deco" href="deconnexion.php"><button class="bu">Se déconnecter</button></a> -->
         </form> 
+        <form class="deco" action="deconnexion.php" method="post">
+        <input class="bu" type="submit" name="logout" value="Déconnexion">
+        </form>
         <!-- <input type="search" placeholder="Rechercher un apprenant ici !" aria-label="Recherche" id="Recherche" name="search"> -->
      
         <table>
